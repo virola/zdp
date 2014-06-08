@@ -1,6 +1,6 @@
 <?php
     require('libs/Smarty.class.php');
-    ini_set('display_errors' , "off") ;
+    ini_set('display_errors' , "on") ;
 
     /**
      * merge_array
@@ -36,7 +36,12 @@
     $smarty -> right_delimiter = "%}"; //右定界符 
 
     $tplData = $res['item']['display']['tplData'];
-    $extData = $res['item']['display']['extData'];
+    if (!$tplData) {
+        $tplData = $res['item']['display'];
+    }
+    else {
+        $extData = $res['item']['display']['extData'];
+    }
 
     $extDataJson = file_get_contents($node_root.'/extData.json');
     $templateConfigJson = file_get_contents($node_root.'/templateConfig.json');

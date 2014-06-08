@@ -23,6 +23,7 @@
  */
 function smarty_modifier_highlight($string)
 {
+    // $string = str_replace(str_replace($string, '<em>', ''), '</em>');
     return $string;
 }
 
